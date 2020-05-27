@@ -88,9 +88,13 @@ public class JmxToDropwizardReporter implements JmxMetricsListener {
         if (metric.getName() != null) {
             nameParts.add(metric.getName());
         }
-        if (!Objects.equals(metric.getMeterName(), "Value") && !Objects.equals(metric.getMeterName(), "Number")) {
-            nameParts.add(metric.getMeterName());
+        if (!Objects.equals(metric.getAttributeName(), "Value") && !Objects.equals(metric.getAttributeName(), "Number")) {
+            nameParts.add(metric.getAttributeName());
         }
+        if(metric.getItemName() != null){
+            nameParts.add(metric.getItemName());
+        }
+
         StringBuilder builder = new StringBuilder();
         for (String namePart : nameParts) {
             builder.append(namePart);
@@ -141,11 +145,11 @@ public class JmxToDropwizardReporter implements JmxMetricsListener {
                 if (context == null) {
                     return;
                 } else if (context instanceof Histogram) {
-                    ((Histogram) context).update(new Long(notification.getUserData() + ""));
+                    ((Histogram) context).update(new Long(metric.getValue() + ""));
                 } else if (context instanceof Meter) {
-                    ((Meter) context).mark(new Long(notification.getUserData() + ""));
+                    ((Meter) context).mark(new Long(metric.getValue() + ""));
                 }
-            } catch (RuntimeException e) {
+            } catch (RuntimeException | MetricNotAvailableException e) {
                 LOGGER.error("Invalid metric config for {}", notification, e);
                 metricRemoval(metric);
                 try {
