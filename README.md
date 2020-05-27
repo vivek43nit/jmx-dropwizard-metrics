@@ -10,6 +10,15 @@ each library.
 
 Now by using this library you will not need to add metrics reporter for each library.
 
+### Maven
+````
+<dependency>
+  <groupId>com.geek-vivek.dropwizard</groupId>
+  <artifactId>jmx-dropwizard-metrics</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+</dependency>
+````
+
 ### How to Use ?
 Ans :
 ````
