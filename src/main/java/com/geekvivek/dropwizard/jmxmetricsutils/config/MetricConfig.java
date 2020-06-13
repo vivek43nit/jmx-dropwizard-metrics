@@ -1,8 +1,10 @@
 package com.geekvivek.dropwizard.jmxmetricsutils.config;
 
 import com.geekvivek.dropwizard.jmxmetricsutils.JmxToDropwizardReporter;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -11,10 +13,14 @@ import java.util.List;
  */
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class MetricConfig {
 
     @Data
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Filter {
         /**
          * metric regex. all matching regex will be added in MetricRegistry with given meterType.

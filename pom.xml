@@ -7,7 +7,7 @@
     <groupId>com.geek-vivek.dropwizard</groupId>
     <artifactId>jmx-dropwizard-metrics</artifactId>
     <name>jmx-dropwizard-metrics</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <description>A library to add metrics from JMX MBeanServer to MetricRegistry based on given config.</description>
     <url>https://github.com/vivek43nit/jmx-dropwizard-metrics</url>
